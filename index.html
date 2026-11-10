@@ -3,32 +3,169 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f3ee">
-  <title>Under Construction</title>
+  <meta name="theme-color" content="#f7f2ec">
+  <meta name="description" content="J&J Beauty in Welland, Ontario. Explore salon services and sample prices, and book an appointment with Priyanka Shah.">
+  <title>J&J Beauty | Welland, Ontario</title>
   <style>
-    :root { color-scheme: light; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-      color: #252722;
-      background: #f5f3ee;
-      text-align: center;
+    :root {
+      color-scheme: light;
+      --cream: #eaf4f1;
+      --paper: #fcfffd;
+      --plum: #075b5b;
+      --plum-deep: #073b43;
+      --gold: #c39a4a;
+      --ink: #1d3030;
+      --muted: #5e7471;
+      --line: #d6e7e2;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-    main { max-width: 34rem; }
-    .icon { font-size: 3rem; line-height: 1; margin-bottom: 1.5rem; }
-    h1 { margin: 0 0 0.75rem; font-size: clamp(2rem, 7vw, 3.5rem); letter-spacing: -0.04em; }
-    p { margin: 0; color: #62665d; font-size: 1.125rem; line-height: 1.6; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); }
+    a { color: inherit; }
+    .topline { height: 5px; background: var(--gold); }
+    header { background: var(--cream); }
+    .nav-wrap { width: min(1120px, calc(100% - 40px)); margin: auto; min-height: 90px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--plum); }
+    /* Replace the initials mark below with J&J Beauty's logo when available. */
+    .logo-mark { width: 50px; height: 50px; border: 1px solid var(--gold); border-radius: 50%; display: grid; place-items: center; font: 1.05rem var(--serif); letter-spacing: -.08em; }
+    .brand-name { font: 1.45rem var(--serif); letter-spacing: .01em; }
+    nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); }
+    nav a { text-decoration: none; font-size: .9rem; }
+    nav a:hover, nav a:focus-visible { color: var(--gold); }
+    .button { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 0 23px; border-radius: 2px; text-decoration: none; font-size: .9rem; font-weight: 650; transition: background .2s ease, transform .2s ease; }
+    .button:hover { transform: translateY(-1px); }
+    .button-primary { background: var(--plum); color: white; }
+    .button-primary:hover { background: var(--plum-deep); }
+    .button-outline { border: 1px solid var(--plum); color: var(--plum); }
+    .hero { background: var(--cream); padding: 34px 20px 86px; }
+    .hero-inner { width: min(1120px, 100%); margin: auto; display: grid; grid-template-columns: 1.02fr .98fr; min-height: 490px; align-items: center; gap: 54px; }
+    .eyebrow { margin: 0 0 16px; color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 700; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    h1 { color: var(--plum-deep); font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.04; letter-spacing: -.035em; margin: 0 0 19px; }
+    .hero-copy > p:not(.eyebrow) { max-width: 470px; color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin: 0 0 27px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    /* Photo placeholder: replace with a portrait of Priyanka Shah or salon photo. */
+    .portrait-placeholder { position: relative; min-height: 440px; display: grid; place-items: center; overflow: hidden; background: linear-gradient(145deg, #b9d8ce, #4c8a7d); }
+    .portrait-placeholder::before, .portrait-placeholder::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.65); inset: 16px; pointer-events: none; }
+    .portrait-placeholder::after { inset: 27px; }
+    .portrait-note { max-width: 220px; padding: 24px; color: var(--plum); text-align: center; line-height: 1.6; }
+    .portrait-note strong { display: block; font: 1.45rem var(--serif); margin-bottom: 7px; }
+    .portrait-note span { font-size: .82rem; }
+    .intro { padding: 82px 20px; text-align: center; }
+    .section-inner { width: min(850px, 100%); margin: auto; }
+    h2 { color: var(--plum); font-size: clamp(2rem, 4vw, 3.15rem); margin: 0 0 17px; }
+    .intro p:last-child { color: var(--muted); line-height: 1.85; margin: 0 auto; max-width: 690px; }
+    .services { background: var(--cream); padding: 80px 20px 88px; }
+    .services-inner { width: min(850px, 100%); margin: auto; }
+    .section-heading { text-align: center; margin-bottom: 38px; }
+    .section-heading .eyebrow { margin-bottom: 12px; }
+    .section-heading p:last-child { color: var(--muted); margin: 0; font-size: .9rem; }
+    .price-card { background: var(--paper); border: 1px solid var(--line); padding: 8px clamp(20px, 5vw, 54px); }
+    .price-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .price-row:last-child { border: 0; }
+    .price-row h3 { color: var(--plum); font-size: 1.2rem; margin: 0 0 5px; }
+    .price-row p { color: var(--muted); font-size: .85rem; margin: 0; }
+    .price { color: var(--plum); font-weight: 700; white-space: nowrap; }
+    .price-note { color: var(--muted); text-align: center; font-size: .82rem; line-height: 1.6; margin: 17px 0 0; }
+    .contact { padding: 80px 20px; text-align: center; }
+    .contact-card { width: min(520px, 100%); margin: 30px auto 0; background: var(--cream); padding: 32px 24px; }
+    .contact-card address { font-style: normal; line-height: 1.8; color: var(--muted); }
+    .contact-card a.button { display: flex; width: fit-content; min-width: 160px; margin: 20px auto 0; }
+    footer { background: var(--plum-deep); color: #eaf4f1; text-align: center; padding: 22px 20px; font-size: .8rem; }
+    footer p { margin: 0; }
+    @media (max-width: 760px) {
+      .nav-wrap { padding: 17px 0; flex-wrap: wrap; }
+      nav { width: 100%; order: 2; justify-content: space-between; gap: 10px; }
+      nav .button { min-height: 40px; padding: 0 14px; }
+      .hero { padding-top: 20px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-copy { padding: 24px 2px 0; }
+      .portrait-placeholder { min-height: 330px; }
+      .intro, .services, .contact { padding-top: 62px; padding-bottom: 62px; }
+    }
+    @media (max-width: 420px) {
+      .brand-name { font-size: 1.25rem; }
+      nav a { font-size: .82rem; }
+      .price-row { gap: 10px; }
+      .price-row h3 { font-size: 1.05rem; }
+    }
   </style>
 </head>
 <body>
+  <div class="topline" aria-hidden="true"></div>
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="#home" aria-label="J and J Beauty home">
+        <span class="logo-mark" aria-hidden="true">J&amp;J</span>
+        <span class="brand-name">J&amp;J Beauty</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact Us</a>
+        <!-- Replace this example URL with J&J Beauty's booking link. -->
+        <a class="button button-primary" href="https://example.com/booking" target="_blank" rel="noopener noreferrer">Book Now</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
-    <div class="icon" aria-hidden="true">🛠️</div>
-    <h1>Under Construction</h1>
-    <p>We’re working on something new. Please check back soon.</p>
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">Beauty, with a personal touch</p>
+          <h1>Feel beautiful.<br>Feel like you.</h1>
+          <p>Welcome to J&amp;J Beauty, where Priyanka Shah brings care, creativity, and a personal touch to every visit. Take a moment for yourself in our friendly Welland salon.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://example.com/booking" target="_blank" rel="noopener noreferrer">Book an Appointment</a>
+            <a class="button button-outline" href="#services">Explore Services</a>
+          </div>
+        </div>
+        <div class="portrait-placeholder" role="img" aria-label="Placeholder for a portrait of salon owner Priyanka Shah">
+          <div class="portrait-note"><strong>Meet Priyanka Shah</strong><span>Owner &amp; beauty professional<br>Portrait photo placeholder</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro" aria-labelledby="welcome-title">
+      <div class="section-inner">
+        <p class="eyebrow">Welcome to J&amp;J Beauty</p>
+        <h2 id="welcome-title">A little time just for you</h2>
+        <p>At J&amp;J Beauty, every appointment is a chance to relax, refresh, and leave feeling your best. Priyanka looks forward to welcoming you and helping you find the service that feels right for you.</p>
+      </div>
+    </section>
+
+    <section class="services" id="services" aria-labelledby="services-title">
+      <div class="services-inner">
+        <div class="section-heading">
+          <p class="eyebrow">Our menu</p>
+          <h2 id="services-title">Services &amp; Pricing</h2>
+          <p>Sample prices in Canadian dollars. Final rates can be updated by the salon.</p>
+        </div>
+        <div class="price-card">
+          <div class="price-row"><div><h3>Haircut &amp; Style</h3><p>Consultation, cut, and finished style</p></div><span class="price">$45+</span></div>
+          <div class="price-row"><div><h3>Blowout</h3><p>Wash and smooth, polished finish</p></div><span class="price">$35+</span></div>
+          <div class="price-row"><div><h3>Root Colour</h3><p>Root touch-up and style</p></div><span class="price">$75+</span></div>
+          <div class="price-row"><div><h3>Full Colour</h3><p>All-over colour; price varies by length</p></div><span class="price">$95+</span></div>
+          <div class="price-row"><div><h3>Eyebrow Shaping</h3><p>Clean, defined brows</p></div><span class="price">$15+</span></div>
+        </div>
+        <p class="price-note">Sample menu for planning purposes. Prices may vary by hair length, service needs, or consultation. Please confirm current pricing when booking.</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner">
+        <p class="eyebrow">We’d love to see you</p>
+        <h2 id="contact-title">Visit J&amp;J Beauty</h2>
+        <div class="contact-card">
+          <address>521 Niagara Street, Unit 1<br>Welland, ON L3C 1L7</address>
+          <a class="button button-primary" href="https://example.com/booking" target="_blank" rel="noopener noreferrer">Book Now</a>
+        </div>
+      </div>
+    </section>
   </main>
+  <footer><p>© <span id="year">2026</span> J&amp;J Beauty · Welland, Ontario</p></footer>
 </body>
 </html>
